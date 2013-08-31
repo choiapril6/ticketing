@@ -1,0 +1,61 @@
+package ticketing;
+
+import java.util.ArrayList;
+
+
+
+public class Agent {
+	
+	private ArrayList<Customer> allocatedCustomer = new ArrayList<Customer>();
+
+	
+	public ArrayList<Customer> getCustomerList() {
+		return this.allocatedCustomer;
+	}
+	public void enqueueCustomer(Customer c) {
+		this.allocatedCustomer.add(c);
+	}
+
+	public void dequeueCustomer() {
+		allocatedCustomer.remove(0);
+	}
+	
+	public int getTimeNeededToFinish() {
+		int timeSum = 0;
+		if(allocatedCustomer.size() == 0)
+			return 0;
+		else {
+			for(Customer c: allocatedCustomer) {
+				timeSum += c.getTimeForTicketing();
+			}
+			return timeSum;
+		}
+	}
+	
+	public Customer ticketing(int currentTime) {
+		
+		if(allocatedCustomer.size() == 0) {
+			return null;
+		}
+		else {
+			Customer customer = allocatedCustomer.get(0);
+			if(customer.getTicketingStartTime() == -1) {
+				customer.setTicketingStartEndTime(currentTime);
+				System.out.println("TIME-SET " + customer + " : " + 
+						customer.getTicketingStartTime() + " ~ " 
+						+ customer.getTicketingEndTime());
+			}
+			if(currentTime == customer.getTicketingEndTime()) {
+				if(allocatedCustomer.size() > 1) {
+					Customer nextCustomer = allocatedCustomer.get(1);
+					nextCustomer.setTicketingStartEndTime(currentTime);
+					System.out.println("TIME-SET " + nextCustomer + " : " + 
+							nextCustomer.getTicketingStartTime() + " ~ " 
+							+ nextCustomer.getTicketingEndTime());
+				}
+				return customer;
+			}
+			else return null;
+		}
+	}
+}

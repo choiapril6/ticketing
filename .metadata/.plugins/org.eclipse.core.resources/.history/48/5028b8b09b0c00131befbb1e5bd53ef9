@@ -1,0 +1,20 @@
+package ticketing;
+
+public class ArrivalTimeCalculator {
+
+	
+	
+	private String departure;
+	private String destination;
+
+	public ArrivalTimeCalculator(Customer customer) {
+		this.departure = customer.getDeparture();
+		this.destination = customer.getDestination();
+	}
+
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

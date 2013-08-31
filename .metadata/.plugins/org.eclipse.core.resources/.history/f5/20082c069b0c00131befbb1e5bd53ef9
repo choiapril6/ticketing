@@ -1,0 +1,10 @@
+package ticketing;
+
+public class ArrivalTimeCalculator {
+
+	public void calculate(Customer customer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

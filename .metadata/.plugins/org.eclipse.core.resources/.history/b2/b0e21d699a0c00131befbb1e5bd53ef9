@@ -1,0 +1,25 @@
+package ticketing;
+
+import java.util.ArrayList;
+
+public class Train {
+
+	private int number;
+	private ArrayList<Customer> customers = new ArrayList<Customer>();
+	
+	public Train(int number) {
+		this.number = number;
+	}
+
+	public void boardCustomer(Customer customer, int currentTime) {
+		customers.add(customer);
+		customer.setDepartingTime(currentTime);
+	}
+	
+	@Override
+	public String toString() {
+		return "Train " + this.number;
+	}
+	
+	
+}

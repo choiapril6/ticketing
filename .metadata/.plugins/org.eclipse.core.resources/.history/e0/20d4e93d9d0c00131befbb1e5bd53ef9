@@ -1,0 +1,30 @@
+package ticketing;
+
+import java.util.ArrayList;
+
+public class Train {
+
+	private int number;
+	private ArrayList<Customer> customers = new ArrayList<Customer>();
+	
+	public Train(int number) {
+		this.number = number;
+	}
+
+	public void boardCustomer(Customer customer, int currentTime) {
+		customers.add(customer);
+		
+		//bind below as a method (relating customer's time)
+		customer.setDepartureTime(currentTime);
+		customer.setTotalWaitingTime(currentTime);
+		ArrivalTimeCalculator atc = new ArrivalTimeCalculator(customer);
+		atc.calculate();
+	}
+	
+	@Override
+	public String toString() {
+		return "Train " + this.number;
+	}
+	
+	
+}

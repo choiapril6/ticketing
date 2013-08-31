@@ -1,0 +1,28 @@
+package ticketing;
+
+public class ArrivalTimeCalculator {
+
+	private Customer customer;
+
+	public ArrivalTimeCalculator(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void calculate() {
+		int arrivalTime = 0;
+		int boardingTime = customer.getBoardingTime();
+		int travelTime = getTravelTime(customer.getDeparture(), customer.getDestination());
+		
+		arrivalTime = boardingTime + travelTime;
+		
+		customer.setArrivalTimeAtDestination(arrivalTime);
+	}
+
+	private int getTravelTime(String departure, String destination) {
+		int travelTime = 0;
+		
+		
+		return travelTime;
+	}
+
+}

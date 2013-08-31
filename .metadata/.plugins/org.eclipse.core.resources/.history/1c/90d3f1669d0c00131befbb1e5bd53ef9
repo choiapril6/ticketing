@@ -1,0 +1,23 @@
+package ticketing;
+
+public class ArrivalTimeCalculator {
+
+	private Customer customer;
+	private String departure;
+	private String destination;
+	private int departureTime;
+
+	public ArrivalTimeCalculator(Customer customer) {
+		this.customer = customer;
+		this.departure = customer.getDeparture();
+		this.destination = customer.getDestination();
+		this.departureTime = customer.getBoardingTime();
+	}
+
+	public void calculate() {
+		int arrivalTime = 0;
+		departureTime = customer.getDepartureTime();
+		customerWorkingOn.setArrivalTimeAtDestination(arrivalTime);
+	}
+
+}

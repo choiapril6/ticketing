@@ -1,0 +1,18 @@
+package ticketing;
+
+public class ArrivalTimeCalculator {
+
+	private Customer customer;
+
+	public ArrivalTimeCalculator(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void calculate() {
+		int arrivalTime = 0;
+		int boardingTime = customer.getBoardingTime();
+		
+		customer.setArrivalTimeAtDestination(arrivalTime);
+	}
+
+}

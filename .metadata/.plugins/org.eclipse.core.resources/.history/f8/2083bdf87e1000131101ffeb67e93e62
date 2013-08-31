@@ -1,0 +1,61 @@
+package ticketing;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+public class TravelReport {
+
+	
+		// report 에 한 명씩 추가해서 요구된 정보 입력하고
+		// 고객 id 오름차순으로 sort
+		
+
+	public void documentCustomer(ArrayList<Train> trainList) throws IOException {
+		
+		ArrayList<Customer> entireCustomerList = new ArrayList<Customer>();
+		
+		FileWriter fw = new FileWriter("TravelReport.txt");
+		
+		for(Train t: trainList) {
+			for(Customer c1: t.getCustomers()) {
+				entireCustomerList.add(c1);
+			}
+		}
+		// TODO: sort by custmID
+		
+		int count = 0;
+		
+		StringBuilder header = makeReportHeader();
+		fw.write(header.toString());
+		// 출력 사항: 고객정보, 티켓팅 대기시간, 티켓팅 시간, 열차대기시간,  고객열차 출발 시간, 고객 열차 도착 시간
+		for(Customer c: entireCustomerList) {
+			
+			String oneCustomerInfo = String.format("%-10s %10s\n", c.getName(), c.getBoardingTime());
+		
+			fw.write(oneCustomerInfo);
+		}
+		
+		System.out.println("count: " + count);
+		
+		fw.close();
+		}
+
+	
+		private StringBuilder makeReportHeader() {
+			StringBuilder headerBuffer = new StringBuilder();
+			String firstLine = String.format("%-10s %-15s %-15s %-15s %-15s %-15s\n", 
+					"Name", "waiting", "ticketing", "waiting", "departs", "arrives");
+			String secondLine = String.format("%-10s %-15s %-15s %-15s %10s %10s\n", "", 
+					"for ticketing", "at", "for boarding", "at", "at");
+			headerBuffer.append(firstLine);
+			headerBuffer.append(secondLine);
+			
+			return headerBuffer;
+		}
+}
+
+
+

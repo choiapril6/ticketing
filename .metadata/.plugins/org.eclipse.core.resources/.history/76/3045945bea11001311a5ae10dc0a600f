@@ -1,0 +1,14 @@
+package ticketing;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+
+public class TicketingMain {
+	
+	public static void main(String[] args) throws IOException {
+		TicketingOffice t = new TicketingOffice();
+		ArrayList<Customer> list = Customer.readCustomerListFromFile();
+		t.ticketing(list);
+	}
+}
